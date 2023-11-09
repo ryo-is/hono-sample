@@ -20,6 +20,16 @@ const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
           return <li>{message}!!</li>;
         })}
       </ul>
+      <a href="/page/goodbay">Go to GoodBay Page</a>
+    </Layout>
+  );
+};
+
+const Goodbay: FC = () => {
+  return (
+    <Layout>
+      <h1>Good Bay!!!</h1>
+      <a href="/page">Go to Top Page</a>
     </Layout>
   );
 };
@@ -27,6 +37,10 @@ const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
 app.get("/", (c) => {
   const messages = ["Good Morning", "Good Evening", "Good Night"];
   return c.html(<Top messages={messages} />);
+});
+
+app.get("/goodbay", (c) => {
+  return c.html(<Goodbay />);
 });
 
 export default app;
