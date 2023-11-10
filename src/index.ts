@@ -6,13 +6,14 @@ import pageRoutes from './page';
 
 const app = new Hono();
 
-app.get('/', (c) => c.text('Hello Hono!'));
-
+// Static Contents
 app.get('/static/*', serveStatic({ root: './' }));
 app.get('/favicon.ico', serveStatic({ path: './favicon.ico' }));
 
+// REST-full
 app.route('/api', apiRoutes);
 
+// SSR
 app.route('/page', pageRoutes);
 
 export default app;
